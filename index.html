@@ -8,7 +8,65 @@
 </head>
 <body>
 
-  <h1>MIC CHECK 123 123123123 ....~~ </h1>
+  <h1>Here's very very loose pseudo code for the first function set</h1>
+
+  <h3>Game Objects</h3>
+    <ul>
+      <li>item(s)</li>
+      <li>modifier(s)</li>
+      <li>Token(s)</li>
+      <li>Wallet (how much tokens you have)</li>
+      <li>warchest (personal storage of items)</li>
+      <li>store (public storage of available items to purchase/sell)</li>
+    </ul>
+
+  <h3>item attributes-- pairs of:(property - value)</h3>
+    <ul>
+      <li>item cost = x tokens (url)</li>
+      <li>item image = item.jpg </li>
+      <li>Slot = 5</li>
+      <li>Strength = y </li>
+      <li>Speed = z </li>
+    </ul>
+
+  <h3>modifier attributes</h3>
+    <ul>
+      <li>% chance of success</li>
+      <li>properies to change & how much to change by upon success (nested set here? db?)</li>
+    </ul>
+
+
+  <h3>Base Item & modifier Functions</h3>
+    <ul>
+      <li>Create item (admin? how will this work decentralized?)</li>
+      <li>Buy item (removing item from store into warchest ++ wallet coin to store. how should confirmation work? what about selling p2p?)</li>
+      <li>Sell item (removing item from warchest ++ store coin to wallet)</li>
+    </ul>
+    <ul>
+      <li>Create Modifier</li>
+      <li>Buy Modifier</li>
+      <li>Sell Modifier</li>
+    </ul>
+
+
+    <h3>Operational Functions</h3>
+      <ul>
+        <li>selecting item - to see attributes & slot status</li>
+        <li>selecting modifier - to see attributes & slot status</li>
+        <li>selecting item & modifier together to be combined (& display stats)</li>
+        <li>unselecting (canceling) item & modifier</li>
+        <li>confirming selection & run combination
+          <ul>
+            <li>if success => apply modifier changes to item, then delete object? (or trash?), load selecting item to show changes (maybe also notification?)</li>
+            <li>if fail ==> delete modifier object (or trash), notify failure & display item object</li>
+          </ul>
+        </li>
+      </ul>
+
+
+  <h3>Warchest?</h3>
+
+  <h3>Store</h3>
 
 </body>
 </html>
