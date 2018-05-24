@@ -12,9 +12,12 @@ var dicepower3 = 80;
 var diceprob1 = 40; //60%
 var diceprob2 = 10; //90%
 var diceprob3 = 90; //10%
+var slots = 5;
 //Begin
 document.getElementById('cash').innerHTML = 'Cash : $' + cash;
 document.getElementById('power').innerHTML = 'Power : ' + power;
+document.getElementById('slots').innerHTML = 'Slots : ' + slots;
+
 
 //Cash Display
 function CashDisplay() {
@@ -26,13 +29,22 @@ function PowerDisplay() {
   document.getElementById('power').innerHTML = 'Power : ' + power;
 }
 
+//Slots Display
+function SlotsDisplay() {
+  document.getElementById('slots').innerHTML = 'Slots : ' + slots;
+}
+
+
+
 //Button1 60% Logic
 button1.onclick = function () {
   //Cash Check
   if (cash >= buttoncash1) {
     cash = cash - buttoncash1;
+    slots = slots - 1;
     document.getElementById('cash').innerHTML = 'Cash : $' + buttoncash1;
     CashDisplay();
+    SlotsDisplay();
 
     //Dice Roll
     var dice = {
@@ -54,13 +66,13 @@ button1.onclick = function () {
       //Update Log
       outcomeList = dice.roll();
       console.log(outcomeList);
-      message = "Success! You rolled a " + outcomeList + " <br>";
+      message = "60% Success! You rolled a " + outcomeList + " and gained " + dicepower1 + " power increase! <br>";
       $("#outcome").append(message);
     } else {
       document.getElementById('placeholder').innerHTML = 'Fail';
       outcomeList = dice.roll();
       console.log(outcomeList);
-      message = "Fail! You unfortunately rolled a " + outcomeList + " <br>";
+      message = "60% Fail! You unfortunately rolled a " + outcomeList + " <br>";
       $("#outcome").append(message);
     }
   }
@@ -74,8 +86,11 @@ button2.onclick = function () {
   //Cash Check
   if (cash >= buttoncash2) {
     cash = cash - buttoncash2;
+    slots = slots - 1;
     document.getElementById('cash').innerHTML = 'Cash : $' + buttoncash2;
     CashDisplay();
+    SlotsDisplay();
+    //Dice Roll
     var dice = {
       sides: 100,
       roll: function () {
@@ -94,13 +109,13 @@ button2.onclick = function () {
       //Update Log
       outcomeList = dice.roll();
       console.log(outcomeList);
-      message = "Success! You rolled a " + outcomeList + " <br>";
+      message = "90% Success! You rolled a " + outcomeList + " and gained " + dicepower2 + " power increase! <br>";
       $("#outcome").append(message);
     } else {
       document.getElementById('placeholder').innerHTML = 'Fail';
       outcomeList = dice.roll();
       console.log(outcomeList);
-      message = "Fail! You unfortunately rolled a " + outcomeList + " <br>";
+      message = "90% Fail! You unfortunately rolled a " + outcomeList + " <br>";
       $("#outcome").append(message);
     }
   }
@@ -109,14 +124,17 @@ button2.onclick = function () {
   }
 };
 
-//Button3 Logic
+//Button3 10% Logic
 button3.onclick = function () {
   //Cash Check
   if (cash >= buttoncash3) {
     cash = cash - buttoncash3;
+    slots = slots - 1;
     document.getElementById('cash').innerHTML = 'Cash : $' + buttoncash3;
     CashDisplay();
-    //Dice Logic
+    SlotsDisplay();
+
+    //Dice Roll
     var dice = {
       sides: 100,
       roll: function () {
@@ -125,6 +143,8 @@ button3.onclick = function () {
       }
     }
     var result = dice.roll();
+
+    //Dice Logic
     if (result > diceprob3) {
       //Power Add
       power = power + dicepower3
@@ -134,13 +154,13 @@ button3.onclick = function () {
       //Update Log
       outcomeList = dice.roll();
       console.log(outcomeList);
-      message = "Success! You rolled a " + outcomeList + " <br>";
+      message = "10% Success! You rolled a " + outcomeList + " and gained " + dicepower3 + " power increase! <br>";
       $("#outcome").append(message);
     } else {
       document.getElementById('placeholder').innerHTML = 'Fail';
       outcomeList = dice.roll();
       console.log(outcomeList);
-      message = "Fail! You unfortunately rolled a " + outcomeList + " <br>";
+      message = "10% Fail! You unfortunately rolled a " + outcomeList + " <br>";
       $("#outcome").append(message);
     }
   }
