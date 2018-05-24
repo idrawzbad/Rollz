@@ -268,7 +268,7 @@ resetbutton.onclick = function () {
     PowerDisplay();
 
     // Update the image
-    document.getElementById('itemimage').src = 'epicsword.jpg';
+    document.getElementById('itemimage').src = 'halberd.png';
     document.getElementById('itemtitle').innerHTML = 'The ShatterMoon';
 
     // Hide / Show Mod buttons based on slots left
