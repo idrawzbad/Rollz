@@ -1,4 +1,4 @@
-var cash = 10000;
+var cash = 2000;
 var power = 100;
 
 //Buttons
@@ -22,6 +22,20 @@ var diceprob1 = 40; //60%
 var diceprob2 = 10; //90%
 var diceprob3 = 90; //10%
 var slots = 5;
+
+var advresultstart1 = 1; //Obtain Item (30%)
+var advresultstart2 = 301; //Obtain 100% of your Adventure fee (20%)
+var advresultstart3 = 501; //Obtain 200% of your Adventure fee (9%)
+var advresultstart4 = 591; //Obtain 1000% of your Adventure fee (1%)
+var advresultstart5 = 601; //Obtain 50% of your Adventure fee (30%)
+
+var advresultend1 = 300;
+var advresultend2 = 500;
+var advresultend3 = 590;
+var advresultend4 = 600;
+var advresultend5 = 900;
+
+
 
 // setting default values for reset
 var defaultpower = 100;
@@ -108,6 +122,7 @@ button2.onclick = function () {
       slots = slots - 1;
       CashDisplay();
       SlotsDisplay();
+
       //Dice Roll
       var dice = {
         sides: 100,
@@ -117,6 +132,7 @@ button2.onclick = function () {
         }
       }
       var result = dice.roll();
+
       //Dice Logic
       if (result > diceprob2) {
         //Power Add
@@ -218,9 +234,64 @@ resetbutton.onclick = function () {
     document.getElementById('placeholder').innerHTML = 'No Money';
   }
 };
-/*
+
 //Adventure Button Logic
-resetbutton.onclick = function () {
+adventurebutton.onclick = function () {
   //Cash Check
-  if (cash >= adventurebuttoncash) 
-*/
+  if (cash >= adventurebuttoncash) {
+    cash = cash - adventurebuttoncash;
+    CashDisplay();
+
+    //Dice Roll
+    var dice = {
+      sides: 1000,
+      roll: function () {
+        var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+        return randomNumber;
+      }
+    }
+    var result = dice.roll();
+
+    //Dice Logic
+
+    //ADV Result 1 - Obtain Item
+    if (result > advresultstart1 && result < advresultend1) {
+      message = "ADVR Result 1 - " + result + "<br>";
+      $("#outcome").append(message);
+    }
+    //ADV Result 2 - Obtain 100% Adventure Fee
+    else if (result > advresultstart2 && result < advresultend2) {
+      cash = cash + adventurebuttoncash;
+      message = "ADVR Result 2 - " + result + "<br>";
+      $("#outcome").append(message);
+    }
+    //ADV Result 3 - Obtain 200% Adventure Fee
+    else if (result > advresultstart3 && result < advresultend3) {
+      cash = cash + (2 * adventurebuttoncash);
+      message = "ADVR Result 3 - " + result + "<br>";
+      $("#outcome").append(message);
+    }
+    //ADV Result 4 - Obtain 1000% Adventure Fee
+    else if (result > advresultstart3 && result < advresultend3) {
+      cash = cash + (10 * adventurebuttoncash);
+      message = "ADVR Result 4 - " + result + "<br>";
+      $("#outcome").append(message);
+    }
+    //ADV Result 5 - Obtain 50% Adventure Fee
+    else if (result > advresultstart3 && result < advresultend3) {
+      cash = cash + (0.5 * adventurebuttoncash);
+      message = "ADVR Result 5 - " + result + "<br>";
+      $("#outcome").append(message);
+    }
+    //ADV Result 6 - Get nothing
+    else {
+      message = "ADVR Result 6 - " + result + "<br>";
+      $("#outcome").append(message);
+    }
+
+
+  }
+  else {
+    document.getElementById('placeholder').innerHTML = 'No Money';
+  }
+};
