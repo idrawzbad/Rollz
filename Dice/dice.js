@@ -6,12 +6,14 @@ var button1 = document.getElementById('button1');//60%
 var button2 = document.getElementById('button2');//90%
 var button3 = document.getElementById('button3');//10%
 var resetbutton = document.getElementById('resetbutton');
+var adventurebutton = document.getElementById('adventurebutton');
 
 //Cash cost for each button
 var buttoncash1 = 300;
 var buttoncash2 = 100;
 var buttoncash3 = 200;
-var resetbuttoncash = 2000;
+var resetbuttoncash = 500;
+var adventurebuttoncash = 100;
 
 var dicepower1 = 30;
 var dicepower2 = 10;
@@ -51,128 +53,143 @@ function SlotsDisplay() {
 
 //Button1 60% Logic
 button1.onclick = function () {
-  //Cash Check
-  if (cash >= buttoncash1) {
-    cash = cash - buttoncash1;
-    slots = slots - 1;
-    CashDisplay();
-    SlotsDisplay();
+  if (slots >= 1) {
+    //Cash Check
+    if (cash >= buttoncash1) {
+      cash = cash - buttoncash1;
+      slots = slots - 1;
+      CashDisplay();
+      SlotsDisplay();
 
-    //Dice Roll
-    var dice = {
-      sides: 100,
-      roll: function () {
-        var randomNumber = Math.floor(Math.random() * this.sides) + 1;
-        return randomNumber;
+      //Dice Roll
+      var dice = {
+        sides: 100,
+        roll: function () {
+          var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+          return randomNumber;
+        }
+      }
+      var result = dice.roll();
+
+      //Dice Logic
+      if (result > diceprob1) {
+        //Power Add
+        power = power + dicepower1
+        document.getElementById('placeholder').innerHTML = 'Success!';
+        PowerDisplay();
+        //Update Log
+        outcomeList = result;
+        console.log(outcomeList);
+        message = "60% Success! You rolled a " + outcomeList + " and gained " + dicepower1 + " power increase! <br>";
+        $("#outcome").append(message);
+      } else {
+        document.getElementById('placeholder').innerHTML = 'Fail';
+        outcomeList = result;
+        console.log(outcomeList);
+        message = "60% Fail! You unfortunately rolled a " + outcomeList + " <br>";
+        $("#outcome").append(message);
       }
     }
-    var result = dice.roll();
-
-    //Dice Logic
-    if (result > diceprob1) {
-      //Power Add
-      power = power + dicepower1
-      document.getElementById('placeholder').innerHTML = 'Success!';
-      PowerDisplay();
-      //Update Log
-      outcomeList = result;
-      console.log(outcomeList);
-      message = "60% Success! You rolled a " + outcomeList + " and gained " + dicepower1 + " power increase! <br>";
-      $("#outcome").append(message);
-    } else {
-      document.getElementById('placeholder').innerHTML = 'Fail';
-      outcomeList = result;
-      console.log(outcomeList);
-      message = "60% Fail! You unfortunately rolled a " + outcomeList + " <br>";
-      $("#outcome").append(message);
+    else {
+      document.getElementById('placeholder').innerHTML = 'No Money';
     }
   }
   else {
-    document.getElementById('placeholder').innerHTML = 'No Money';
+    document.getElementById('placeholder').innerHTML = 'No Slots';
   }
 };
 
 //Button2 90% Logic
 button2.onclick = function () {
-  //Cash Check
-  if (cash >= buttoncash2) {
-    cash = cash - buttoncash2;
-    slots = slots - 1;
-    CashDisplay();
-    SlotsDisplay();
-    //Dice Roll
-    var dice = {
-      sides: 100,
-      roll: function () {
-        var randomNumber = Math.floor(Math.random() * this.sides) + 1;
-        return randomNumber;
+  if (slots >= 1) {
+    //Cash Check
+    if (cash >= buttoncash2) {
+      cash = cash - buttoncash2;
+      slots = slots - 1;
+      CashDisplay();
+      SlotsDisplay();
+      //Dice Roll
+      var dice = {
+        sides: 100,
+        roll: function () {
+          var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+          return randomNumber;
+        }
+      }
+      var result = dice.roll();
+      //Dice Logic
+      if (result > diceprob2) {
+        //Power Add
+        power = power + dicepower2
+        document.getElementById('placeholder').innerHTML = 'Success!';
+        PowerDisplay();
+        //Update Log
+        outcomeList = result;
+        console.log(outcomeList);
+        message = "90% Success! You rolled a " + outcomeList + " and gained " + dicepower2 + " power increase! <br>";
+        $("#outcome").append(message);
+      } else {
+        document.getElementById('placeholder').innerHTML = 'Fail';
+        outcomeList = result;
+        console.log(outcomeList);
+        message = "90% Fail! You unfortunately rolled a " + outcomeList + " <br>";
+        $("#outcome").append(message);
       }
     }
-    var result = dice.roll();
-    //Dice Logic
-    if (result > diceprob2) {
-      //Power Add
-      power = power + dicepower2
-      document.getElementById('placeholder').innerHTML = 'Success!';
-      PowerDisplay();
-      //Update Log
-      outcomeList = result;
-      console.log(outcomeList);
-      message = "90% Success! You rolled a " + outcomeList + " and gained " + dicepower2 + " power increase! <br>";
-      $("#outcome").append(message);
-    } else {
-      document.getElementById('placeholder').innerHTML = 'Fail';
-      outcomeList = result;
-      console.log(outcomeList);
-      message = "90% Fail! You unfortunately rolled a " + outcomeList + " <br>";
-      $("#outcome").append(message);
+    else {
+      document.getElementById('placeholder').innerHTML = 'No Money';
     }
   }
   else {
-    document.getElementById('placeholder').innerHTML = 'No Money';
+    document.getElementById('placeholder').innerHTML = 'No Slots';
   }
 };
 
 //Button3 10% Logic
 button3.onclick = function () {
-  //Cash Check
-  if (cash >= buttoncash3) {
-    cash = cash - buttoncash3;
-    slots = slots - 1;
-    CashDisplay();
-    SlotsDisplay();
+  if (slots >= 1) {
+    //Cash Check
+    if (cash >= buttoncash3) {
+      cash = cash - buttoncash3;
+      slots = slots - 1;
+      CashDisplay();
+      SlotsDisplay();
 
-    //Dice Roll
-    var dice = {
-      sides: 100,
-      roll: function () {
-        var randomNumber = Math.floor(Math.random() * this.sides) + 1;
-        return randomNumber;
+      //Dice Roll
+      var dice = {
+        sides: 100,
+        roll: function () {
+          var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+          return randomNumber;
+        }
+      }
+      var result = dice.roll();
+
+      //Dice Logic
+      if (result > diceprob3) {
+        //Power Add
+        power = power + dicepower3
+        document.getElementById('placeholder').innerHTML = 'Success!';
+        PowerDisplay();
+        //Update Log
+        outcomeList = result;
+        console.log(outcomeList);
+        message = "10% Success! You rolled a " + outcomeList + " and gained " + dicepower3 + " power increase! <br>";
+        $("#outcome").append(message);
+      } else {
+        document.getElementById('placeholder').innerHTML = 'Fail';
+        outcomeList = result;
+        console.log(outcomeList);
+        message = "10% Fail! You unfortunately rolled a " + outcomeList + " <br>";
+        $("#outcome").append(message);
       }
     }
-    var result = dice.roll();
-
-    //Dice Logic
-    if (result > diceprob3) {
-      //Power Add
-      power = power + dicepower3
-      document.getElementById('placeholder').innerHTML = 'Success!';
-      PowerDisplay();
-      //Update Log
-      outcomeList = result;
-      console.log(outcomeList);
-      message = "10% Success! You rolled a " + outcomeList + " and gained " + dicepower3 + " power increase! <br>";
-      $("#outcome").append(message);
-    } else {
-      document.getElementById('placeholder').innerHTML = 'Fail';
-      outcomeList = result;
-      console.log(outcomeList);
-      message = "10% Fail! You unfortunately rolled a " + outcomeList + " <br>";
-      $("#outcome").append(message);
+    else {
+      document.getElementById('placeholder').innerHTML = 'No Money';
     }
   }
   else {
-    document.getElementById('placeholder').innerHTML = 'No Money';
+    document.getElementById('placeholder').innerHTML = 'No Slots';
   }
 };
 
@@ -201,3 +218,9 @@ resetbutton.onclick = function () {
     document.getElementById('placeholder').innerHTML = 'No Money';
   }
 };
+/*
+//Adventure Button Logic
+resetbutton.onclick = function () {
+  //Cash Check
+  if (cash >= adventurebuttoncash) 
+*/
