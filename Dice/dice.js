@@ -56,7 +56,7 @@ button1.onclick = function () {
     }
     var result = dice.roll();
 
-    //Dice Logic  
+    //Dice Logic
     if (result > diceprob1) {
       //Power Add
       power = power + dicepower1
@@ -64,13 +64,13 @@ button1.onclick = function () {
       document.getElementById('power').innerHTML = 'Power : ' + power;
       PowerDisplay();
       //Update Log
-      outcomeList = dice.roll();
+      outcomeList = result;
       console.log(outcomeList);
       message = "60% Success! You rolled a " + outcomeList + " and gained " + dicepower1 + " power increase! <br>";
       $("#outcome").append(message);
     } else {
       document.getElementById('placeholder').innerHTML = 'Fail';
-      outcomeList = dice.roll();
+      outcomeList = result;
       console.log(outcomeList);
       message = "60% Fail! You unfortunately rolled a " + outcomeList + " <br>";
       $("#outcome").append(message);
@@ -107,13 +107,13 @@ button2.onclick = function () {
       document.getElementById('power').innerHTML = 'Power : ' + power;
       PowerDisplay();
       //Update Log
-      outcomeList = dice.roll();
+      outcomeList = result;
       console.log(outcomeList);
       message = "90% Success! You rolled a " + outcomeList + " and gained " + dicepower2 + " power increase! <br>";
       $("#outcome").append(message);
     } else {
       document.getElementById('placeholder').innerHTML = 'Fail';
-      outcomeList = dice.roll();
+      outcomeList = result;
       console.log(outcomeList);
       message = "90% Fail! You unfortunately rolled a " + outcomeList + " <br>";
       $("#outcome").append(message);
@@ -152,13 +152,13 @@ button3.onclick = function () {
       document.getElementById('power').innerHTML = 'Power : ' + power;
       PowerDisplay();
       //Update Log
-      outcomeList = dice.roll();
+      outcomeList = result;
       console.log(outcomeList);
       message = "10% Success! You rolled a " + outcomeList + " and gained " + dicepower3 + " power increase! <br>";
       $("#outcome").append(message);
     } else {
       document.getElementById('placeholder').innerHTML = 'Fail';
-      outcomeList = dice.roll();
+      outcomeList = result;
       console.log(outcomeList);
       message = "10% Fail! You unfortunately rolled a " + outcomeList + " <br>";
       $("#outcome").append(message);
