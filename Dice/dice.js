@@ -1,26 +1,17 @@
-var cash = 1000;
+var cash = 10000;
 var power = 100;
 var button1 = document.getElementById('button1');//60%
 var button2 = document.getElementById('button2');//90%
 var button3 = document.getElementById('button3');//10%
 var buttoncash1 = 300;
-var buttoncash2 = 200;
-var buttoncash3 = 100;
+var buttoncash2 = 100;
+var buttoncash3 = 200;
 var dicepower1 = 30;
 var dicepower2 = 10;
 var dicepower3 = 80;
 var diceprob1 = 40; //60%
 var diceprob2 = 10; //90%
 var diceprob3 = 90; //10%
-var dice = {
-  sides: 100,
-  roll: function () {
-    var randomNumber = Math.floor(Math.random() * this.sides) + 1;
-    return randomNumber;
-  }
-}
-var result = dice.roll();
-
 //Begin
 document.getElementById('cash').innerHTML = 'Cash : $'+ cash;
 document.getElementById('power').innerHTML = 'Power : '+ power;
@@ -35,12 +26,6 @@ function PowerDisplay(){
   document.getElementById('power').innerHTML = 'Power : '+ power;
 }
 
-//Prints dice roll to the page
-function printNumber(number) {
-  var placeholder = document.getElementById('placeholder');
-  placeholder.innerHTML = number;
-}
-
 //Button1 Logic
 button1.onclick = function() {
   //Cash Check
@@ -49,7 +34,16 @@ button1.onclick = function() {
           document.getElementById('cash').innerHTML = 'Cash : $'+ buttoncash1;   
           CashDisplay();
     //Dice Logic
-    if (result > diceprob1) {
+  var dice = {
+    sides: 100,
+    roll: function () {
+    var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+    return randomNumber;
+      }
+    }
+  var result = dice.roll();
+    
+    if (result <= diceprob1) {
       //Power Add
       power = power + dicepower1
       document.getElementById('placeholder').innerHTML = 'Success!';
@@ -80,8 +74,16 @@ button2.onclick = function() {
     cash = cash - buttoncash2;
           document.getElementById('cash').innerHTML = 'Cash : $'+ buttoncash2;   
           CashDisplay();
+    var dice = {
+      sides: 100,
+      roll: function () {
+      var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+      return randomNumber;
+        }
+      }
+    var result = dice.roll();      
     //Dice Logic
-    if (result > diceprob2) {
+    if (result <= diceprob2) {
       //Power Add
       power = power + dicepower2
       document.getElementById('placeholder').innerHTML = 'Success!';
@@ -113,7 +115,15 @@ button3.onclick = function() {
           document.getElementById('cash').innerHTML = 'Cash : $'+ buttoncash3;   
           CashDisplay();
     //Dice Logic
-    if (result > diceprob3) {
+    var dice = {
+      sides: 100,
+      roll: function () {
+        var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+        return randomNumber;
+      }
+    }
+    var result = dice.roll();
+    if (result <= diceprob3) {
       //Power Add
       power = power + dicepower3
       document.getElementById('placeholder').innerHTML = 'Success!';
