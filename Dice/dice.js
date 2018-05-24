@@ -1,11 +1,18 @@
 var cash = 10000;
 var power = 100;
+
+//Buttons
 var button1 = document.getElementById('button1');//60%
 var button2 = document.getElementById('button2');//90%
 var button3 = document.getElementById('button3');//10%
+var resetbutton = document.getElementById('resetbutton');
+
+//Cash cost for each button
 var buttoncash1 = 300;
 var buttoncash2 = 100;
 var buttoncash3 = 200;
+var resetbuttoncash = 2000;
+
 var dicepower1 = 30;
 var dicepower2 = 10;
 var dicepower3 = 80;
@@ -13,6 +20,12 @@ var diceprob1 = 40; //60%
 var diceprob2 = 10; //90%
 var diceprob3 = 90; //10%
 var slots = 5;
+
+// setting default values for reset
+var defaultpower = 100;
+var defaultslots = 5;
+
+
 //Begin
 document.getElementById('cash').innerHTML = 'Cash : $' + cash;
 document.getElementById('power').innerHTML = 'Power : ' + power;
@@ -42,7 +55,6 @@ button1.onclick = function () {
   if (cash >= buttoncash1) {
     cash = cash - buttoncash1;
     slots = slots - 1;
-    document.getElementById('cash').innerHTML = 'Cash : $' + buttoncash1;
     CashDisplay();
     SlotsDisplay();
 
@@ -61,7 +73,6 @@ button1.onclick = function () {
       //Power Add
       power = power + dicepower1
       document.getElementById('placeholder').innerHTML = 'Success!';
-      document.getElementById('power').innerHTML = 'Power : ' + power;
       PowerDisplay();
       //Update Log
       outcomeList = result;
@@ -87,7 +98,6 @@ button2.onclick = function () {
   if (cash >= buttoncash2) {
     cash = cash - buttoncash2;
     slots = slots - 1;
-    document.getElementById('cash').innerHTML = 'Cash : $' + buttoncash2;
     CashDisplay();
     SlotsDisplay();
     //Dice Roll
@@ -104,7 +114,6 @@ button2.onclick = function () {
       //Power Add
       power = power + dicepower2
       document.getElementById('placeholder').innerHTML = 'Success!';
-      document.getElementById('power').innerHTML = 'Power : ' + power;
       PowerDisplay();
       //Update Log
       outcomeList = result;
@@ -130,7 +139,6 @@ button3.onclick = function () {
   if (cash >= buttoncash3) {
     cash = cash - buttoncash3;
     slots = slots - 1;
-    document.getElementById('cash').innerHTML = 'Cash : $' + buttoncash3;
     CashDisplay();
     SlotsDisplay();
 
@@ -149,7 +157,6 @@ button3.onclick = function () {
       //Power Add
       power = power + dicepower3
       document.getElementById('placeholder').innerHTML = 'Success!';
-      document.getElementById('power').innerHTML = 'Power : ' + power;
       PowerDisplay();
       //Update Log
       outcomeList = result;
@@ -163,6 +170,32 @@ button3.onclick = function () {
       message = "10% Fail! You unfortunately rolled a " + outcomeList + " <br>";
       $("#outcome").append(message);
     }
+  }
+  else {
+    document.getElementById('placeholder').innerHTML = 'No Money';
+  }
+};
+
+//Reset Button Logic
+resetbutton.onclick = function () {
+  //Cash Check
+  if (cash >= resetbuttoncash) {
+    cash = cash - resetbuttoncash;
+    slots = 5;
+    CashDisplay();
+
+    message = "You've Reset your item! " + "Your last item had " + power + " power" + "<br>";
+    $("#outcome").append(message);
+
+    // reset and show slot and power
+    power = defaultpower;
+    slots = defaultslots;
+    SlotsDisplay();
+    PowerDisplay();
+
+    // Update the image
+    document.getElementById('itemimage').src = 'epicsword.jpg';
+
   }
   else {
     document.getElementById('placeholder').innerHTML = 'No Money';
