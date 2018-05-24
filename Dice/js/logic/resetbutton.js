@@ -18,6 +18,10 @@ resetbutton.onclick = function () {
     lastitemtitle = document.getElementById('itemtitle').innerHTML;
     LastItemDisplay();
 
+    // change opacity of last item
+    document.getElementById('lastitem').style.opacity = "1";
+
+
     // reset and show slot and power
     power = defaultpower;
     slots = defaultslots;
