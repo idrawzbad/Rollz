@@ -13,81 +13,43 @@ var diceprob1 = 40; //60%
 var diceprob2 = 10; //90%
 var diceprob3 = 90; //10%
 //Begin
-document.getElementById('cash').innerHTML = 'Cash : $'+ cash;
-document.getElementById('power').innerHTML = 'Power : '+ power;
+document.getElementById('cash').innerHTML = 'Cash : $' + cash;
+document.getElementById('power').innerHTML = 'Power : ' + power;
 
 //Cash Display
-function CashDisplay(){ 
-  document.getElementById('cash').innerHTML = 'Cash : $'+ cash;
+function CashDisplay() {
+  document.getElementById('cash').innerHTML = 'Cash : $' + cash;
 }
 
 //Power Display
-function PowerDisplay(){
-  document.getElementById('power').innerHTML = 'Power : '+ power;
+function PowerDisplay() {
+  document.getElementById('power').innerHTML = 'Power : ' + power;
 }
 
-//Button1 Logic
-button1.onclick = function() {
+//Button1 60% Logic
+button1.onclick = function () {
   //Cash Check
   if (cash >= buttoncash1) {
     cash = cash - buttoncash1;
-          document.getElementById('cash').innerHTML = 'Cash : $'+ buttoncash1;   
-          CashDisplay();
-    //Dice Logic
-  var dice = {
-    sides: 100,
-    roll: function () {
-    var randomNumber = Math.floor(Math.random() * this.sides) + 1;
-    return randomNumber;
-      }
-    }
-  var result = dice.roll();
-    
-    if (result <= diceprob1) {
-      //Power Add
-      power = power + dicepower1
-      document.getElementById('placeholder').innerHTML = 'Success!';
-      document.getElementById('power').innerHTML = 'Power : '+ power;
-      PowerDisplay();
-      //Update Log
-      outcomeList = dice.roll();
-      console.log(outcomeList);
-      message = "Success! You rolled a " + outcomeList + " <br>";
-      $("#outcome").append(message);
-    } else {
-     document.getElementById('placeholder').innerHTML = 'Fail';
-     outcomeList = dice.roll();
-      console.log(outcomeList);
-      message = "Fail! You unfortunately rolled a " + outcomeList + " <br>";
-      $("#outcome").append(message);
-     }
-    }
-  else {
-    document.getElementById('placeholder').innerHTML = 'No Money';
-   }  
-  };
+    document.getElementById('cash').innerHTML = 'Cash : $' + buttoncash1;
+    CashDisplay();
 
-  //Button2 Logic
-button2.onclick = function() {
-  //Cash Check
-  if (cash >= buttoncash2) {
-    cash = cash - buttoncash2;
-          document.getElementById('cash').innerHTML = 'Cash : $'+ buttoncash2;   
-          CashDisplay();
+    //Dice Roll
     var dice = {
       sides: 100,
       roll: function () {
-      var randomNumber = Math.floor(Math.random() * this.sides) + 1;
-      return randomNumber;
-        }
+        var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+        return randomNumber;
       }
-    var result = dice.roll();      
-    //Dice Logic
-    if (result <= diceprob2) {
+    }
+    var result = dice.roll();
+
+    //Dice Logic  
+    if (result > diceprob1) {
       //Power Add
-      power = power + dicepower2
+      power = power + dicepower1
       document.getElementById('placeholder').innerHTML = 'Success!';
-      document.getElementById('power').innerHTML = 'Power : '+ power;
+      document.getElementById('power').innerHTML = 'Power : ' + power;
       PowerDisplay();
       //Update Log
       outcomeList = dice.roll();
@@ -95,25 +57,65 @@ button2.onclick = function() {
       message = "Success! You rolled a " + outcomeList + " <br>";
       $("#outcome").append(message);
     } else {
-     document.getElementById('placeholder').innerHTML = 'Fail';
-     outcomeList = dice.roll();
+      document.getElementById('placeholder').innerHTML = 'Fail';
+      outcomeList = dice.roll();
       console.log(outcomeList);
       message = "Fail! You unfortunately rolled a " + outcomeList + " <br>";
       $("#outcome").append(message);
-     }
     }
+  }
   else {
     document.getElementById('placeholder').innerHTML = 'No Money';
-   }  
-  };
+  }
+};
+
+//Button2 90% Logic
+button2.onclick = function () {
+  //Cash Check
+  if (cash >= buttoncash2) {
+    cash = cash - buttoncash2;
+    document.getElementById('cash').innerHTML = 'Cash : $' + buttoncash2;
+    CashDisplay();
+    var dice = {
+      sides: 100,
+      roll: function () {
+        var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+        return randomNumber;
+      }
+    }
+    var result = dice.roll();
+    //Dice Logic
+    if (result > diceprob2) {
+      //Power Add
+      power = power + dicepower2
+      document.getElementById('placeholder').innerHTML = 'Success!';
+      document.getElementById('power').innerHTML = 'Power : ' + power;
+      PowerDisplay();
+      //Update Log
+      outcomeList = dice.roll();
+      console.log(outcomeList);
+      message = "Success! You rolled a " + outcomeList + " <br>";
+      $("#outcome").append(message);
+    } else {
+      document.getElementById('placeholder').innerHTML = 'Fail';
+      outcomeList = dice.roll();
+      console.log(outcomeList);
+      message = "Fail! You unfortunately rolled a " + outcomeList + " <br>";
+      $("#outcome").append(message);
+    }
+  }
+  else {
+    document.getElementById('placeholder').innerHTML = 'No Money';
+  }
+};
 
 //Button3 Logic
-button3.onclick = function() {
+button3.onclick = function () {
   //Cash Check
   if (cash >= buttoncash3) {
     cash = cash - buttoncash3;
-          document.getElementById('cash').innerHTML = 'Cash : $'+ buttoncash3;   
-          CashDisplay();
+    document.getElementById('cash').innerHTML = 'Cash : $' + buttoncash3;
+    CashDisplay();
     //Dice Logic
     var dice = {
       sides: 100,
@@ -123,11 +125,11 @@ button3.onclick = function() {
       }
     }
     var result = dice.roll();
-    if (result <= diceprob3) {
+    if (result > diceprob3) {
       //Power Add
       power = power + dicepower3
       document.getElementById('placeholder').innerHTML = 'Success!';
-      document.getElementById('power').innerHTML = 'Power : '+ power;
+      document.getElementById('power').innerHTML = 'Power : ' + power;
       PowerDisplay();
       //Update Log
       outcomeList = dice.roll();
@@ -135,14 +137,14 @@ button3.onclick = function() {
       message = "Success! You rolled a " + outcomeList + " <br>";
       $("#outcome").append(message);
     } else {
-     document.getElementById('placeholder').innerHTML = 'Fail';
-     outcomeList = dice.roll();
+      document.getElementById('placeholder').innerHTML = 'Fail';
+      outcomeList = dice.roll();
       console.log(outcomeList);
       message = "Fail! You unfortunately rolled a " + outcomeList + " <br>";
       $("#outcome").append(message);
-     }
     }
+  }
   else {
     document.getElementById('placeholder').innerHTML = 'No Money';
-   }  
-  };
+  }
+};
