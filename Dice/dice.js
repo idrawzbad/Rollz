@@ -63,6 +63,30 @@ function SlotsDisplay() {
   document.getElementById('slots').innerHTML = 'Slots : ' + slots;
 }
 
+// Last Item Display
+function LastItemDisplay() {
+  document.getElementById('lastitemimage').src = lastitemimage;
+  document.getElementById('lastitemtitle').innerHTML = "Last Item:" + lastitemtitle;
+  document.getElementById('lastitempower').innerHTML = "Power:" + lastitempower;
+  document.getElementById('lastitemslots').innerHTML = "Slots:" + lastitemslots;
+}
+
+// Slot check - hide button 123 if slot is 0
+function SlotCheck() {
+  var modbuttons = document.getElementById("modbuttons");
+
+  // Hide mod buttons after slot reaches 1
+  if (slots <= 0) {
+    modbuttons.style.pointerEvents = "none";
+    modbuttons.style.opacity ="0.2";
+  }
+  else {
+    modbuttons.style.pointerEvents = "auto";
+    modbuttons.style.opacity ="1";
+  }
+};
+
+
 
 
 //Button1 60% Logic
@@ -74,6 +98,9 @@ button1.onclick = function () {
       slots = slots - 1;
       CashDisplay();
       SlotsDisplay();
+
+      // Hide / Show Mod buttons based on slots left
+        SlotCheck();
 
       //Dice Roll
       var dice = {
@@ -123,6 +150,9 @@ button2.onclick = function () {
       CashDisplay();
       SlotsDisplay();
 
+        // Hide / Show Mod buttons based on slots left
+        SlotCheck();
+
       //Dice Roll
       var dice = {
         sides: 100,
@@ -171,6 +201,9 @@ button3.onclick = function () {
       CashDisplay();
       SlotsDisplay();
 
+      // Hide / Show Mod buttons based on slots left
+      SlotCheck();
+
       //Dice Roll
       var dice = {
         sides: 100,
@@ -217,8 +250,16 @@ resetbutton.onclick = function () {
     slots = 5;
     CashDisplay();
 
+
     message = "You've Reset your item! " + "Your last item had " + power + " power" + "<br>";
     $("#outcome").append(message);
+
+    // save current item as last item & display it
+    lastitempower = power;
+    lastitemslots = slots;
+    lastitemimage = document.getElementById('itemimage').src;
+    lastitemtitle = document.getElementById('itemtitle').innerHTML;
+    LastItemDisplay();
 
     // reset and show slot and power
     power = defaultpower;
@@ -228,6 +269,10 @@ resetbutton.onclick = function () {
 
     // Update the image
     document.getElementById('itemimage').src = 'epicsword.jpg';
+    document.getElementById('itemtitle').innerHTML = 'The ShatterMoon';
+
+    // Hide / Show Mod buttons based on slots left
+      SlotCheck();
 
   }
   else {
