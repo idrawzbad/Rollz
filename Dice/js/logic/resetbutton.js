@@ -33,6 +33,6 @@ resetbutton.onclick = function () {
 
   }
   else {
-    document.getElementById('placeholder').innerHTML = 'No Money';
+    document.getElementById('message-box').innerHTML = 'No Money';
   }
 };

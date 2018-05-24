@@ -8,3 +8,14 @@ body {
   margin: 50px auto;
   max-width: 900px;
 }
+
+
+* {
+  text-align: center;
+}
+
+
+.current-item {
+  background: #EFEFEF;
+  padding: 20px;
+}

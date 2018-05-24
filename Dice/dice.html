@@ -2,50 +2,47 @@
 
 <head>
   <title>Dice Test</title>
-  <link rel="stylesheet" href="css/dice.css">
+  <link rel="stylesheet" href="css/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 </head>
 
 <body>
 
+<div class="current-item">
   <p id="cash">
   </p>
   <p id="power">
   </p>
   <p id="slots">
   </p>
+  <img id="itemimage" height="100px" width="100px" src="assets/Sword.jpg">
+  <br>
+  <Strong id="itemtitle"> The Sun Slayer</Strong>
+</div>
 
+<div id="message-box"></div>
 
-  <p align="center">
-    <img id="itemimage" height="100px" width="100px" src="assets/Sword.jpg">
-    <br>
+<div id="modbuttons">
+  <button id="button1">60% Odds - $300</button>
+  <button id="button2">90% Odds - $100</button>
+  <button id="button3">10% Odds - $200</button>
+</div>
 
-    <Strong id="itemtitle"> The Sun Slayer</Strong>
-
-  </p>
-  <p id="placeholder">
-  </p>
-
-  <div id="modbuttons">
-    <button id="button1">60% Odds - $300</button>
-    <button id="button2">90% Odds - $100</button>
-    <button id="button3">10% Odds - $200</button>
-  </div>
-
+<div class="action-button">
   <button id="resetbutton">RESET ITEM - $500</button>
   <button id="adventurebutton">Adventure - $100</button>
+</div>
+
+<div id="lastitem">
+  <img id="lastitemimage" src="" alt="">
+  <h1 id="lastitemtitle"></h1>
+  <p id="lastitempower"></p>
+  <div id="lastitemslots"></div>
+</div>
+
+<div id="outcome"> </div>
 
 
-  <div id="lastitem">
-    <img id="lastitemimage" src="" alt="">
-    <h1 id="lastitemtitle"></h1>
-    <p id="lastitempower"></p>
-    <div id="lastitemslots"></div>
-  </div>
-
-
-  <p id="outcome"> </p>
   <script src="js/loader.js"></script>
   <script src="js/main.js"></script>
 </body>

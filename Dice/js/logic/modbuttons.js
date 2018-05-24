@@ -25,7 +25,7 @@ button1.onclick = function () {
       if (result > diceprob1) {
         //Power Add
         power = power + dicepower1
-        document.getElementById('placeholder').innerHTML = 'Success!';
+        document.getElementById('message-box').innerHTML = 'Success!';
         PowerDisplay();
         //Update Log
         outcomeList = result;
@@ -33,7 +33,7 @@ button1.onclick = function () {
         message = "60% Success! You rolled a " + outcomeList + " and gained " + dicepower1 + " power increase! <br>";
         $("#outcome").append(message);
       } else {
-        document.getElementById('placeholder').innerHTML = 'Fail';
+        document.getElementById('message-box').innerHTML = 'Fail';
         outcomeList = result;
         console.log(outcomeList);
         message = "60% Fail! You unfortunately rolled a " + outcomeList + " <br>";
@@ -41,11 +41,11 @@ button1.onclick = function () {
       }
     }
     else {
-      document.getElementById('placeholder').innerHTML = 'No Money';
+      document.getElementById('message-box').innerHTML = 'No Money';
     }
   }
   else {
-    document.getElementById('placeholder').innerHTML = 'No Slots';
+    document.getElementById('message-box').innerHTML = 'No Slots';
   }
 };
 
@@ -76,7 +76,7 @@ button2.onclick = function () {
       if (result > diceprob2) {
         //Power Add
         power = power + dicepower2
-        document.getElementById('placeholder').innerHTML = 'Success!';
+        document.getElementById('message-box').innerHTML = 'Success!';
         PowerDisplay();
         //Update Log
         outcomeList = result;
@@ -84,7 +84,7 @@ button2.onclick = function () {
         message = "90% Success! You rolled a " + outcomeList + " and gained " + dicepower2 + " power increase! <br>";
         $("#outcome").append(message);
       } else {
-        document.getElementById('placeholder').innerHTML = 'Fail';
+        document.getElementById('message-box').innerHTML = 'Fail';
         outcomeList = result;
         console.log(outcomeList);
         message = "90% Fail! You unfortunately rolled a " + outcomeList + " <br>";
@@ -92,11 +92,11 @@ button2.onclick = function () {
       }
     }
     else {
-      document.getElementById('placeholder').innerHTML = 'No Money';
+      document.getElementById('message-box').innerHTML = 'No Money';
     }
   }
   else {
-    document.getElementById('placeholder').innerHTML = 'No Slots';
+    document.getElementById('message-box').innerHTML = 'No Slots';
   }
 };
 
@@ -127,7 +127,7 @@ button3.onclick = function () {
       if (result > diceprob3) {
         //Power Add
         power = power + dicepower3
-        document.getElementById('placeholder').innerHTML = 'Success!';
+        document.getElementById('message-box').innerHTML = 'Success!';
         PowerDisplay();
         //Update Log
         outcomeList = result;
@@ -135,7 +135,7 @@ button3.onclick = function () {
         message = "10% Success! You rolled a " + outcomeList + " and gained " + dicepower3 + " power increase! <br>";
         $("#outcome").append(message);
       } else {
-        document.getElementById('placeholder').innerHTML = 'Fail';
+        document.getElementById('message-box').innerHTML = 'Fail';
         outcomeList = result;
         console.log(outcomeList);
         message = "10% Fail! You unfortunately rolled a " + outcomeList + " <br>";
@@ -143,10 +143,10 @@ button3.onclick = function () {
       }
     }
     else {
-      document.getElementById('placeholder').innerHTML = 'No Money';
+      document.getElementById('message-box').innerHTML = 'No Money';
     }
   }
   else {
-    document.getElementById('placeholder').innerHTML = 'No Slots';
+    document.getElementById('message-box').innerHTML = 'No Slots';
   }
 };
